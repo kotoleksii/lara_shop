@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property mixed total_sum
+ * @method static create(array $check)
  */
 class Order extends Model
 {
@@ -22,6 +23,13 @@ class Order extends Model
     const STATUS_CLOSED = 2;
     const STATUS_ARCHIVED = 3;
     const STATUS_REJECTED = 0;
+
+    protected $fillable = [
+        'id',
+        'status',
+        'total_sum',
+        'user_id'
+    ];
 
     protected $hidden = [
         'deleted_at',

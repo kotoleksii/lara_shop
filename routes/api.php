@@ -36,3 +36,6 @@ Route::group(['prefix' => 'albums'], function(){
     Route::post('/{album}', [AlbumController::class, 'multipleUpload']);
 });
 
+Route::group(['prefix' => 'orders'], function() {
+    Route::post('/', [OrderController::class, 'create']);
+});

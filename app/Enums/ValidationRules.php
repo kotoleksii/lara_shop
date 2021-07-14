@@ -43,6 +43,12 @@ class ValidationRules
             'upload'        => 'required',
             'upload.*'      => 'image|mimes:jpeg,jpg,png,gif,svg|max:10240',
         ],
+
+        'order_create' => [
+            'status'         => 'required|max:64',
+            'total_sum'   => 'sometimes|max:255',
+            'user_id'    => 'required|numeric|exists:App\Models\User,id',
+        ],
     ];
 
 }

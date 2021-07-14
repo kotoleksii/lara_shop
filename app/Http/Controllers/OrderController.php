@@ -3,10 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Services\ValidationService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class OrderController extends Controller
 {
+    /**
+     * @throws ValidationException
+     */
+    public function create(Request $request, ValidationService $validationService): Order
+    {
+        return Order::create($validationService->check('order_create'));
+    }
+
+
     // QueryBuilder examples
     public function get()
     {
