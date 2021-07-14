@@ -1,0 +1,24 @@
+//        dd($request->path());
+//        dd($request->is('api/*'));
+//        dd($request->url());
+//        dd($request->fullUrl());
+
+//        dd($request->isMethod('post'));
+
+//        dd($request->header('content-type'));
+//        dd($request->hasHeader('Accept'));
+//        dd($request->bearerToken());
+
+//        dd($request->all());
+//        dd($request->input());
+//        dd($request->input('name2', 'no_name'));
+//        dd($request->query('name', 'no_name'));
+//        dd($request->input('role.statuses'));
+//        dd($request->only(['role.statuses', 'name']));
+//        dd($request->except(['name']));
+
+//        $request->whenHas('name', function($name){
+//            dd($name);
+//        });
+//        dd($request->filled('name'));
+//        dd($request->missing('name'));
