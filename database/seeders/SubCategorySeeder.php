@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\SubCategory;
-use Database\Factories\SubCategoryFactory;
 use Illuminate\Database\Seeder;
 use App\Enums\SeedersConstants as SC;
 

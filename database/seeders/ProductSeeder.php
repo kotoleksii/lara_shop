@@ -6,7 +6,7 @@ use App\Models\Product;
 use Illuminate\Database\Seeder;
 use App\Enums\SeedersConstants as SC;
 
-class ProductSeedereder extends Seeder
+class ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.

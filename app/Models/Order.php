@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
-use App\Casts\OrderStatusCast;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @property mixed total_sum
+ */
 class Order extends Model
 {
     use HasFactory;
@@ -49,18 +52,43 @@ class Order extends Model
         $this->total_sum = $val * 100;
     }
 
+    /**
+     * Order belongs to User
+     *
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Order has Invoice
+     *
+     * @return HasOne
+     */
     public function invoice(): HasOne
     {
         return $this->hasOne(Invoice::class);
     }
 
+    /**
+     * Order belongs to many Products
+     *
+     * @return BelongsToMany
+     */
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    /**
+     * Order has many Transactions
+     *
+     * @return HasMany
+     */
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(Transaction::class);
     }
 }

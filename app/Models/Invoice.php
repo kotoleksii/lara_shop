@@ -10,6 +10,11 @@ class Invoice extends Model
 {
     use HasFactory;
 
+    /**
+     * Invoice belongs to Order
+     *
+     * @return BelongsTo
+     */
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);

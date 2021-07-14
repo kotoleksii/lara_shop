@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\MessageBag;
 
 /**
- * @method static create(array|\Illuminate\Support\MessageBag|null $check)
+ * @method static create(array|MessageBag|null $check)
  */
 class Album extends Model
 {
@@ -20,12 +23,12 @@ class Album extends Model
         'created_at', 'updated_at', 'product_id'
     ];
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
 
-    public function images()
+    public function images(): HasMany
     {
         return $this->hasMany(Image::class);
     }

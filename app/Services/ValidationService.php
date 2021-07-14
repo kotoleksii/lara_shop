@@ -5,19 +5,16 @@ namespace App\Services;
 
 
 use App\Enums\ValidationRules;
-use HttpInvalidParamException;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\MessageBag;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ValidationService
 {
     /**
      * @param $rule
      * @param array|null $data
-     * @return MessageBag|null
+     * @return array
      * @throws ValidationException
      */
     public function check($rule, array $data = null): array

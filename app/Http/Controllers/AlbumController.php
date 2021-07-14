@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Album;
 use App\Services\ValidationService;
-use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class AlbumController extends Controller
@@ -21,15 +20,13 @@ class AlbumController extends Controller
     }
 
     /**
-     * @throws ValidationException
      */
     public function multipleUpload(Album $album, ValidationService $validationService)
     {
-        $data = $validationService->check('images_multiple_upload', \request()->all());
+//        $data = $validationService->check('images_multiple_upload', \request()->all());
 
-        foreach ($data['upload'] as $image) {
-
-        }
+//        foreach ($data['upload'] as $image) {
+//
+//        }
     }
-
 }

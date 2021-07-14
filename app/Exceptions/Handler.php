@@ -39,7 +39,7 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function(HttpException $e, $request){
+        $this->renderable(function(HttpException $e){
             return response()->json(['errors' => $e->getMessage()], $e->getStatusCode());
         });
     }

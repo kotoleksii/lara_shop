@@ -20,11 +20,11 @@ class TransactionFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         $modes = ['card', 'cash'];
         return [
-            'executed_at' => $this->faker->dateTime('now', null),
+            'executed_at' => $this->faker->dateTime(),
             'status' => rand(1,3),
             'mode' => $modes[rand(0, 1)],
             'order_id' => rand(1, SC::ORDERS_COUNT),

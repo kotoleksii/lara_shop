@@ -1,22 +1,19 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Services\ValidationService;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 class CategoryController extends Controller
 {
     /**
-     * Get all
-     * @return Category[]|Collection
+     * Get all categories
+     * @return Category[]|\Illuminate\Database\Eloquent\Collection
      */
     public function getAll()
     {
@@ -77,6 +74,4 @@ class CategoryController extends Controller
 
        return response()->json('', \Symfony\Component\HttpFoundation\Response::HTTP_NO_CONTENT);
    }
-
-
 }

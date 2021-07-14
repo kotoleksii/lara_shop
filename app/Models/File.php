@@ -10,7 +10,7 @@ class File extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'original_name', 'original_extention', 'path',
+        'id', 'original_name', 'original_extension', 'path',
     ];
 
     protected $hidden = [

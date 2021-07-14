@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
@@ -126,7 +125,7 @@ class OrderController extends Controller
         dd($result);
     }
     // Casts
-    public function getTest()
+    public function getTest(): array
     {
 //        $order = Order::find(12);
 //        $order->total_sum_hr = 999.99;
@@ -149,7 +148,7 @@ class OrderController extends Controller
     // Collections
     public function getCollection()
     {
-        $nums = collect([2, 3, 4, 5, 3, 6, 2]);
+//        $nums = collect([2, 3, 4, 5, 3, 6, 2]);
 
 
 

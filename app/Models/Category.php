@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpMultipleClassDeclarationsInspection */
 
 namespace App\Models;
 
@@ -30,6 +30,8 @@ class Category extends Model
 
     /**
      * Return associated categories
+     *
+     * Category has many SubCategories
      *
      * @return HasMany
      */

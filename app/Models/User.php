@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * @method static count()
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -34,8 +37,13 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function orders()
+    /**
+     * User has many Orders
+     *
+     * @return HasMany
+     */
+    public function orders(): HasMany
     {
-        $this->hasMany(Order::class);
+        return $this->hasMany(Order::class);
     }
 }
