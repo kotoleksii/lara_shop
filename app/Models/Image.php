@@ -19,11 +19,21 @@ class Image extends Model
         'album_id', 'file_id', 'created_at', 'updated_at',
     ];
 
+    /**
+     * Image belongs to Album
+     *
+     * @return BelongsTo
+     */
     public function album(): BelongsTo
     {
         return $this->belongsTo(Album::class);
     }
 
+    /**
+     * Image has File
+     *
+     * @return HasOne
+     */
     public function file(): HasOne
     {
         return $this->hasOne(File::class);

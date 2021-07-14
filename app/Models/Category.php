@@ -29,8 +29,6 @@ class Category extends Model
     ];
 
     /**
-     * Return associated categories
-     *
      * Category has many SubCategories
      *
      * @return HasMany
