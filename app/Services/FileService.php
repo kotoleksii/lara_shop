@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 class FileService
 {
     /**
-     * Save files method
+     * File saving method
      *
      * @param UploadedFile $uploadedFile
      * @param array $config
