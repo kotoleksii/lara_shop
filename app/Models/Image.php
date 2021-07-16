@@ -2,11 +2,27 @@
 
 namespace App\Models;
 
+use Eloquent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Carbon;
 
+/**
+ * App\Models\Image
+ *
+ * @property int $id
+ * @property string|null $title
+ * @property string|null $description
+ * @property int $album_id
+ * @property int $file_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Album $album
+ * @property-read File|null $file
+ * @mixin Eloquent
+ */
 class Image extends Model
 {
     use HasFactory;
@@ -36,6 +52,6 @@ class Image extends Model
      */
     public function file(): HasOne
     {
-        return $this->hasOne(File::class);
+        return $this->hasOne(File::class, 'id', 'file_id');
     }
 }

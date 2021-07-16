@@ -18,7 +18,13 @@ class FileTypes
         return $selfClass->getConstants();
     }
 
-    const IMAGE_FILE_TYPE = [
+    const PRODUCT_IMAGE_FILE_TYPE = [
         'dir' => 'products_images',
+        'slug' => 'product-image-file-type',
+    ];
+
+    const PRODUCT_PDF_FILE_TYPE = [
+        'dir' => 'products_pdf',
+        'slug' => 'product-pdf-file-type',
     ];
 }

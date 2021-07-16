@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\FileService;
 use App\Services\ValidationService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -18,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(ValidationService::class, function(){
             return new ValidationService();
+        });
+
+        $this->app->singleton(FileService::class, function(){
+            return new FileService();
         });
     }
 
