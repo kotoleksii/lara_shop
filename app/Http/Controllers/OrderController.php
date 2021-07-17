@@ -4,24 +4,80 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Services\ValidationService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends Controller
 {
     /**
+     * Get Order by Id
+     * @param Order $order
+     * @return Order
+     */
+    public function get(Order $order): Order
+    {
+        return $order;
+    }
+
+    /**
+     * Get all Orders
+     *
+     * @return Order[]|Collection
+     */
+    public function getAll()
+    {
+        return Order::all();
+    }
+
+    /**
+     * Create new Order
+     *
+     * @param ValidationService $validationService
+     * @return Order
      * @throws ValidationException
      */
-    public function create(Request $request, ValidationService $validationService): Order
+    public function create(ValidationService $validationService): Order
     {
         return Order::create($validationService->check('order_create'));
     }
 
+    /**
+     * Update Order
+     *
+     * @param Order $order
+     * @param ValidationService $validationService
+     * @return JsonResponse
+     * @throws ValidationException
+     */
+    public function patch(Order $order, ValidationService $validationService): JsonResponse
+    {
+        $order->update($validationService->check('order_patch'));
+
+        return response()->json('', Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * Delete Order
+     *
+     * @param Order $order
+     * @return JsonResponse
+     */
+    public function delete(Order $order): JsonResponse
+    {
+        if(!$order->exists())
+            return response()->json('', Response::HTTP_UNPROCESSABLE_ENTITY);
+
+        $order->delete();
+
+        return response()->json('', Response::HTTP_NO_CONTENT);
+    }
+
 
     // QueryBuilder examples
-    public function get()
-    {
+//    public function get()
+//    {
 //        dd('test');
 
 //        $result = DB::table('orders')
@@ -34,7 +90,7 @@ class OrderController extends Controller
 //
 //        $result = Order::find(23);
 
-        $query = DB::table('orders');
+//        $query = DB::table('orders');
 
 //        $result = $query->find(23);
 
@@ -128,17 +184,17 @@ class OrderController extends Controller
 //        $result = $query->orderBy('status', 'desc')
 //            ->get();
 
-        $result = $query
-            ->groupBy('status')
-            ->having('status', '>', 0)
-            ->select(DB::raw('count(*)'))
-            ->get();
-
-        dd($result);
-    }
+//        $result = $query
+//            ->groupBy('status')
+//            ->having('status', '>', 0)
+//            ->select(DB::raw('count(*)'))
+//            ->get();
+//
+//        dd($result);
+//    }
     // Casts
-    public function getTest(): array
-    {
+//    public function getTest()
+//    {
 //        $order = Order::find(12);
 //        $order->total_sum_hr = 999.99;
 //        $order->save();
@@ -151,15 +207,15 @@ class OrderController extends Controller
 //        $order->save();
 //        dd($order->status);
 
-        $order = Order::with('user')->where('id', 12)->first();
-        $order->makeHidden('user_id');
+//        $order = Order::with('user')->where('id', 12)->first();
+//        $order->makeHidden('user_id');
 //        return $order->toArray();
 //        return $order->toJson();
-        return $order->attributesToArray();
-    }
+//        return $order->attributesToArray();
+//    }
     // Collections
-    public function getCollection()
-    {
+//    public function getCollection()
+//    {
 //        $nums = collect([2, 3, 4, 5, 3, 6, 2]);
 
 
@@ -215,5 +271,5 @@ class OrderController extends Controller
 //        return Order::get()->sortBy('status')->all();
 
 
-    }
+//    }
 }

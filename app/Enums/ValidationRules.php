@@ -47,6 +47,14 @@ class ValidationRules
         'order_create' => [
             'status'         => 'required|max:64',
             'total_sum'   => 'sometimes|max:255',
+            'delivery_sum'   => 'sometimes|max:255',
+            'user_id'    => 'required|numeric|exists:App\Models\User,id',
+        ],
+
+        'order_patch' => [
+            'status'         => 'required|max:64',
+            'total_sum'   => 'sometimes|max:255',
+            'delivery_sum'   => 'sometimes|max:255',
             'user_id'    => 'required|numeric|exists:App\Models\User,id',
         ],
     ];

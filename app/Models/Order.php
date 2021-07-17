@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * @property mixed total_sum
  * @method static create(array $check)
+ * @method exists()
+ * @method static find($id)
  */
 class Order extends Model
 {
@@ -28,6 +30,7 @@ class Order extends Model
         'id',
         'status',
         'total_sum',
+        'delivery_sum',
         'user_id'
     ];
 

@@ -38,7 +38,11 @@ Route::group(['prefix' => 'albums'], function(){
 });
 
 Route::group(['prefix' => 'orders'], function() {
+    Route::get('/{order}', [OrderController::class, 'get']);
+    Route::get('/', [OrderController::class, 'getAll']);
     Route::post('/', [OrderController::class, 'create']);
+    Route::patch('/{order}', [OrderController::class, 'patch']);
+    Route::delete('/{order}', [OrderController::class, 'delete']);
 });
 
 Route::group(['prefix'=> 'images'], function(){
