@@ -33,6 +33,7 @@ Route::group(['prefix' => 'categories'], function(){
 });
 
 Route::group(['prefix' => 'albums'], function(){
+    Route::get('/{album}', [AlbumController::class, 'get']);
     Route::post('/', [AlbumController::class, 'create']);
     Route::post('/{album}', [AlbumController::class, 'multipleUpload']);
 });

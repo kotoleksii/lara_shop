@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * App\Models\Image
@@ -27,12 +28,18 @@ class Image extends Model
 {
     use HasFactory;
 
+    const DEFAULT_IMAGE_PATH = 'img/default_image.jpg';
+
     protected $fillable = [
         'id', 'title', 'description'
     ];
 
     protected $hidden = [
-        'album_id', 'file_id', 'created_at', 'updated_at',
+        'album_id', 'file', 'file_id', 'created_at', 'updated_at',
+    ];
+
+    protected $appends = [
+      'src',
     ];
 
     /**
@@ -53,5 +60,13 @@ class Image extends Model
     public function file(): HasOne
     {
         return $this->hasOne(File::class, 'id', 'file_id');
+    }
+
+    public function getSrcAttribute(): string
+    {
+        if ($this->file && Storage::exists($this->file->path))
+            return Storage::url($this->file->path);
+
+        return asset(self::DEFAULT_IMAGE_PATH);
     }
 }

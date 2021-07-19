@@ -13,6 +13,13 @@ use function request;
 
 class AlbumController extends Controller
 {
+    public function get(Album $album)
+    {
+        $album->load(['images']);
+
+        return response()->json($album, 200);
+    }
+
     /**
      * Create new album
      * @param ValidationService $validationService
