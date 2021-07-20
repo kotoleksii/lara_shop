@@ -21,6 +21,10 @@ class DatabaseSeeder extends Seeder
             OrderSeeder::class,
             OrderProductPivotSeeder::class,
             TransactionSeeder::class,
+
+            PermissionsSeeder::class,
+            RolesSeeder::class,
+            TablesRelationsSeeder::class,
         ]);
     }
 }
